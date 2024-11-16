@@ -36,6 +36,7 @@ export default {
           default: '#1C64F2'
         },
         gray: {
+          "default" : "#E5E7EB",
           "50": "#F9FAFB",
           "100": "#F3F4F6",
           "200": "#E5E7EB",
