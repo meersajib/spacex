@@ -7,7 +7,6 @@ export async function fetchLandingPads() {
   const data = await res.json();
 
   const updatedData = data.map(pad => {
-    console.log('pad', pad);
     const successRate = pad.attempted_landings
       ? (pad.successful_landings / pad.attempted_landings) * 100
       : 0;

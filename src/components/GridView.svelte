@@ -13,10 +13,10 @@ let selectedPad = null; // To track the pad for the modal
 let showModal = false;
 </script>
 
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
     {#each pads as pad}
     <div class="bg-white border border-gray-300 rounded-lg p-6 shadow-lg hover:shadow-2xl transition-shadow duration-200">
-        <div class="flex justify-between items-center mb-4">
+        <div class="mb-4">
             <h3 class="text-lg font-semibold text-gray-800">{pad?.full_name}</h3>
             <Badge class="text-xs px-2 py-1 rounded-full
                 {pad.status === 'active' ? 'bg-green-100 text-green-800' :
