@@ -29,7 +29,7 @@ const getBadgeClass = (status) => {
             };
         default:
             return {
-                bg: 'bg-yellow-100', text: 'text-yellow-800'
+                bg: 'bg-primary-100', text: 'text-primary-800'
             };
     }
 };
