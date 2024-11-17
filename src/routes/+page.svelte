@@ -35,7 +35,10 @@ import ChartView from "../components/ChartView.svelte";
 
 let viewMode = $state('table')
 let filter = $state(0);
-// let pads = $state($landingPads)
+
+onMount(() => {
+    fetchLandingPads();
+});
 
 // Filtering the landingPads
 let filteredPads = $derived($landingPads.filter(pad => {
@@ -44,11 +47,6 @@ let filteredPads = $derived($landingPads.filter(pad => {
     if (filter === 2) return pad.status === "retired";
     if (filter === 3) return pad.status === "under construction";
 }));
-
-// Fetch data on mount
-onMount(() => {
-    fetchLandingPads();
-});
 </script>
 
 <div class="lg:flex gap-[40px]">
@@ -75,7 +73,7 @@ onMount(() => {
         <!-- Right column content -->
         <div class="flex flex-col gap-[26px]">
             <div style="box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.05), 0px 4px 6px -1px rgba(0, 0, 0, 0.10);"
-             class="rounded-lg border border-gray-default">
+                class="rounded-lg border border-gray-default">
                 <p class="p-4  text-sm text-gray-900 font-semibold">Map View</p>
                 {#if filteredPads?.length}
                 <MapView pads={filteredPads?.map(pad => ({id: pad?.id,lat: pad?.location?.latitude, lon: pad?.location?.longitude, status: pad?.status}))} />
@@ -84,18 +82,17 @@ onMount(() => {
                 {/if}
             </div>
             <div style="box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.05), 0px 4px 6px -1px rgba(0, 0, 0, 0.10);"
-            class="rounded-lg border border-gray-default">
+                class="rounded-lg border border-gray-default">
                 <p class="p-4  text-sm text-gray-900 font-semibold border-b border-gray-default">Success Rate Chart</p>
-                {#if $landingPads?.length}
+                {#if filteredPads?.length}
                 <ChartView
                     pads={
-                    $landingPads?.filter(pad => pad?.success_rate > 0)?.map(pad => ({id: pad?.id, name: pad?.location?.name, rates: pad?.success_rate, status: pad?.status}))
+                    filteredPads?.map(pad => ({id: pad?.id, name: pad?.location?.name, rates: pad?.success_rate, status: pad?.status}))
                     } />
                 {:else}
                 <ImagePlaceholder imgOnly class="h-full" />
                 {/if}
             </div>
-
         </div>
     </div>
 </div>

@@ -1,41 +1,24 @@
 <script>
 import {
-    Chart,
-    Card,
-    A,
-    Button,
-    Dropdown,
-    DropdownItem,
-    Popover,
-    Tooltip
+    Chart
 } from 'flowbite-svelte';
-import {
-    InfoCircleSolid,
-    ArrowDownToBracketOutline,
-    ChevronDownOutline,
-    ChevronRightOutline,
-    PenSolid,
-    DownloadSolid,
-    ShareNodesSolid
-} from 'flowbite-svelte-icons';
 
 const {
     pads
-} = $props()
-console.log(
-    'p',pads
-)
+} = $props();
+
+// Reactive chart options
 let options = $derived({
-    series: pads.map(pad => pad.rates),
-    colors: ['#1A56DB', '#16BDCA', '#FDBA8C', '#E74694', '#9B1C1C'],
+    series: pads.map((pad) => pad.rates),
+    colors: ['#1A56DB', '#16BDCA', '#FDBA8C', '#E74694', '#91F652'],
     chart: {
         height: 220,
         width: '100%',
-        type: 'donut'
+        type: 'donut',
     },
     stroke: {
-        colors: ['transparent'],
-        lineCap: ''
+        colors: ['#1A56DB', '#16BDCA', '#FDBA8C', '#E74694', '#91F652'],
+        lineCap: 'round',
     },
     plotOptions: {
         pie: {
@@ -53,38 +36,38 @@ let options = $derived({
                         label: 'Landing Pads',
                         formatter: function(w) {
                             const totalPads = w.globals.seriesTotals.length;
-                            return totalPads;
-                        }
+                            return `${totalPads}`;
+                        },
                     },
                     value: {
                         show: true,
                         fontFamily: 'Inter, sans-serif',
                         offsetY: -20,
                         formatter: function(value) {
-                            return value + '%';
-                        }
-                    }
+                            return `${value}%`;
+                        },
+                    },
                 },
-                size: '80%'
-            }
-        }
+                size: '80%',
+            },
+        },
     },
     grid: {
         padding: {
-            top: -2
-        }
+            top: -2,
+        },
     },
-    labels: [...pads.map(pad => pad.name)],
+    labels: pads.map((pad) => pad.name),
     dataLabels: {
-        enabled: false
+        enabled: false,
     },
     legend: false,
     yaxis: {
         labels: {
             formatter: function(value) {
-                return value + '%';
-            }
-        }
+                return `${value}%`;
+            },
+        },
     },
 });
 </script>

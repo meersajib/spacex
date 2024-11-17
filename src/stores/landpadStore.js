@@ -12,7 +12,6 @@ export async function fetchLandingPads() {
       ? (pad.successful_landings / pad.attempted_landings) * 100
       : 0;
 
-    // Ensure success_rate has two decimal places
     return {
       ...pad,
       showModal: false ,
