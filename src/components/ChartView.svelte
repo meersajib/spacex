@@ -22,7 +22,9 @@ import {
 const {
     pads
 } = $props()
-
+console.log(
+    'p',pads
+)
 let options = $derived({
     series: pads.map(pad => pad.rates),
     colors: ['#1A56DB', '#16BDCA', '#FDBA8C', '#E74694', '#9B1C1C'],
