@@ -74,7 +74,8 @@ onMount(() => {
     <div class="w-full lg:w-[521px]">
         <!-- Right column content -->
         <div class="flex flex-col gap-[26px]">
-            <div class="shadow-[0px_4px_6px_-1px_#0000001A] border-1 border-gray-default">
+            <div style="box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.05), 0px 4px 6px -1px rgba(0, 0, 0, 0.10);"
+             class="rounded-lg border border-gray-default">
                 <p class="p-4  text-sm text-gray-900 font-semibold">Map View</p>
                 {#if $landingPads?.length}
                 <MapView pads={$landingPads?.map(pad => ({id: pad?.id,lat: pad?.location?.latitude, lon: pad?.location?.longitude, status: pad?.status}))} />
@@ -82,8 +83,9 @@ onMount(() => {
                 <ImagePlaceholder imgOnly class="h-full" />
                 {/if}
             </div>
-            <div class="shadow-[0px_4px_6px_-1px_#0000001A] border-1 border-gray-default">
-                <p class="p-4  text-sm text-gray-900 font-semibold">Success Rate Chart</p>
+            <div style="box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.05), 0px 4px 6px -1px rgba(0, 0, 0, 0.10);"
+            class="rounded-lg border border-gray-default">
+                <p class="p-4  text-sm text-gray-900 font-semibold border-b border-gray-default">Success Rate Chart</p>
                 {#if $landingPads?.length}
                 <ChartView
                     pads={

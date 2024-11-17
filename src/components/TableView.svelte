@@ -97,7 +97,7 @@ let showModal = $state(false);
             <!-- Status -->
             <TableBodyCell class="px-5 py-2.5 text-sm font-semibold text-gray-900 max-w-[167px] text-ellipsis overflow-hidden">
                 <Badge
-                    class="{`${getBadgeClass(pad?.status).bg} ${getBadgeClass(pad?.status).text} capitalize`}"
+                    class={`${getBadgeClass(pad?.status).bg} ${getBadgeClass(pad?.status).text} capitalize`}
                     >
                     {pad?.status}
                 </Badge>

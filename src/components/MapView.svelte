@@ -20,7 +20,7 @@ import {
 } from "ol/proj";
 
 // Pads array passed from parent component
-export let pads = [];
+const { pads } = $props()
 
 // Function to generate style for markers based on pad status
 const generateMarker = (status) => {
@@ -100,12 +100,14 @@ onMount(() => {
 });
 
 // Watch for changes in pads and update the map
-$: if (pads.length) {
-    updateMap();
-}
+$effect(() => {
+    if (pads.length) {
+        updateMap();
+    }
+});
 </script>
   
-  <style>
+<style>
 #map {
     width: 100%;
     height: 300px;
