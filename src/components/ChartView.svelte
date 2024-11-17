@@ -4,8 +4,8 @@
 
   export let pads = []
   
-  const options = {
-    series: [...pads?.filter(pad => pad?.success_rate > 0)?.map(pad => pad?.success_rate)],
+   $: options = {
+    series: pads?.map(pad => pad?.rates),
     colors: ['#1A56DB', '#16BDCA', '#FDBA8C', '#E74694', '#9B1C1C'],
     chart: {
       height: 220,
@@ -53,7 +53,7 @@
         top: -2
       }
     },
-    labels: [...pads?.filter(pad => pad?.success_rate > 0)?.map(pad => pad?.location?.name)],
+    labels: [...pads?.map(pad => pad?.name)],
     dataLabels: {
       enabled: false
     },

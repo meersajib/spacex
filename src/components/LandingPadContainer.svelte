@@ -48,7 +48,7 @@ export let filter = ''
                 <MapView pads={pads?.map(pad => ({id: pad?.id,lat: pad?.location?.latitude, lon: pad?.location?.longitude, status: pad?.status}))} />
                 <ChartView 
                 pads={
-                pads
+                pads?.filter(pad => pad?.success_rate > 0)?.map(pad => ({id: pad?.id, name: pad?.location?.name, rates: pad?.success_rate, status: pad?.status}))
                 } />
             </div>
         </div>
