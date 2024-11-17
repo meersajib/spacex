@@ -1,5 +1,4 @@
 <script>
-export let pads = [];
 import {
     Badge,
     Button,
@@ -16,7 +15,7 @@ import {
     LinkOutline
 } from 'flowbite-svelte-icons';
 
-// Function to get badge class for background and text color
+// Function to get badges background and text color class
 const getBadgeClass = (status) => {
     switch (status) {
         case 'active':
@@ -34,11 +33,12 @@ const getBadgeClass = (status) => {
     }
 };
 
-let selectedPad = null;
-let showModal = false;
+const { pads } = $props()
+let selectedPad = $state(null);
+let showModal = $state(false);
 </script>
 
-<Table shadow>
+<Table shadow class="w-full overflow-auto">
     <TableHead class="bg-gray-50 h-[50px]">
         <TableHeadCell class="text-gray-500 text-[12px] leading-[18px] px-4">Full Name</TableHeadCell>
         <TableHeadCell class="text-gray-500 text-[12px] leading-[18px] px-4">Location Name</TableHeadCell>
@@ -104,7 +104,6 @@ let showModal = false;
         {/each}
     </TableBody>
 </Table>
-
 <!-- Modal -->
 {#if showModal && selectedPad}
 <Modal

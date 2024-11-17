@@ -1,6 +1,6 @@
 <script>
     import { onMount } from "svelte";
-    import "ol/ol.css"; // Import OpenLayers styles
+    import "ol/ol.css";
     import Map from "ol/Map";
     import View from "ol/View";
     import TileLayer from "ol/layer/Tile";
@@ -17,10 +17,10 @@
   
     // Pads array passed from parent component
     export let pads = [];
+    
     // Function to generate style for markers based on pad status
     const generateMarker = (status) => {
       let color; // Default fill color
-      let strokeColor = "black"; // Stroke color for better visibility
   
       switch (status) {
         case "active":
@@ -39,21 +39,19 @@
   
       return new Style({
         image: new CircleStyle({
-          radius: 8, // Marker size
+          radius: 14, // Marker size
           fill: new Fill({ color }), // Fill color based on status
-        //   stroke: new Stroke({ color: strokeColor, width: 1 }), // Optional border
         }),
       });
     };
   
-    let map; // Map reference
-    let vectorLayer; // Reference to the vector layer for markers
+    let map;
+    let vectorLayer;
   
     // Function to update features on the map
     const updateMap = () => {
       if (vectorLayer) {
         const vectorSource = new VectorSource();
-  
         // Add features for each pad
         pads.forEach((pad) => {
           const feature = new Feature({
@@ -84,10 +82,10 @@
       // Initialize the map
       map = new Map({
         target: "map", // The container ID
-        layers: [tileLayer, vectorLayer], // Add layers
+        layers: [tileLayer, vectorLayer],
         view: new View({
-          center: fromLonLat([0, 0]), // Default center
-          zoom: 2, // Default zoom level
+          center: fromLonLat([0, 0]),
+          zoom: 2,
         }),
       });
   
@@ -104,15 +102,13 @@
   <style>
     #map {
       width: 100%;
-      height: 400px; /* Adjust the height based on your layout */
-      border: 1px solid #ccc; /* Optional styling */
+      height: 300px;
+      border: 1px solid #E5E7EB;
     }
   </style>
   
   <!-- Map container -->
-  <div class="shadow-[0px_4px_6px_-1px_#0000001A] border-1 border-gray-default">
-    <p class="p-4  text-sm text-gray-900 font-semibold">Map View</p>
-    <div id="map"></div>
-</div>  
+  <div id="map"></div>
+  
 
   

@@ -1,87 +1,90 @@
 <script>
-  import { Chart, Card, A, Button, Dropdown, DropdownItem, Popover, Tooltip } from 'flowbite-svelte';
-  import { InfoCircleSolid, ArrowDownToBracketOutline, ChevronDownOutline, ChevronRightOutline, PenSolid, DownloadSolid, ShareNodesSolid } from 'flowbite-svelte-icons';
+import {
+    Chart,
+    Card,
+    A,
+    Button,
+    Dropdown,
+    DropdownItem,
+    Popover,
+    Tooltip
+} from 'flowbite-svelte';
+import {
+    InfoCircleSolid,
+    ArrowDownToBracketOutline,
+    ChevronDownOutline,
+    ChevronRightOutline,
+    PenSolid,
+    DownloadSolid,
+    ShareNodesSolid
+} from 'flowbite-svelte-icons';
 
-  export let pads = []
-  
-   $: options = {
+const {
+    pads
+} = $props()
+
+let options = $derived({
     series: pads?.map(pad => pad?.rates),
     colors: ['#1A56DB', '#16BDCA', '#FDBA8C', '#E74694', '#9B1C1C'],
     chart: {
-      height: 220,
-      width: '100%',
-      type: 'donut'
+        height: 220,
+        width: '100%',
+        type: 'donut'
     },
     stroke: {
-      colors: ['transparent'],
-      lineCap: ''
+        colors: ['transparent'],
+        lineCap: ''
     },
     plotOptions: {
-      pie: {
-        donut: {
-          labels: {
-            show: true,
-            name: {
-              show: true,
-              fontFamily: 'Inter, sans-serif',
-              offsetY: 20,
-            },
-            total: {
-              showAlways: true,
-              show: true,
-              label: 'Landing Pads',
-              formatter: function (w) {
-                const totalPads = w.globals.seriesTotals.length;
-                return totalPads;
-              }
-            },
-            value: {
-              show: true,
-              fontFamily: 'Inter, sans-serif',
-              offsetY: -20,
-              formatter: function (value) {
-                return value + '%';
-              }
+        pie: {
+            donut: {
+                labels: {
+                    show: true,
+                    name: {
+                        show: true,
+                        fontFamily: 'Inter, sans-serif',
+                        offsetY: 20,
+                    },
+                    total: {
+                        showAlways: true,
+                        show: true,
+                        label: 'Landing Pads',
+                        formatter: function(w) {
+                            const totalPads = w.globals.seriesTotals.length;
+                            return totalPads;
+                        }
+                    },
+                    value: {
+                        show: true,
+                        fontFamily: 'Inter, sans-serif',
+                        offsetY: -20,
+                        formatter: function(value) {
+                            return value + '%';
+                        }
+                    }
+                },
+                size: '80%'
             }
-          },
-          size: '80%'
         }
-      }
     },
     grid: {
-      padding: {
-        top: -2
-      }
+        padding: {
+            top: -2
+        }
     },
     labels: [...pads?.map(pad => pad?.name)],
     dataLabels: {
-      enabled: false
+        enabled: false
     },
     legend: false,
     yaxis: {
-      labels: {
-        formatter: function (value) {
-          return value + '%';
+        labels: {
+            formatter: function(value) {
+                return value + '%';
+            }
         }
-      }
     },
-    // xaxis: {
-    //   labels: {
-    //     formatter: function (value) {
-    //       return value + 'k';
-    //     }
-    //   },
-    //   axisTicks: {
-    //     show: false
-    //   },
-    //   axisBorder: {
-    //     show: false
-    //   }
-    // }
-  };
+});
 </script>
 
-<div class="shadow-[0px_4px_6px_-1px_#0000001A] border-1 border-gray-default">
-    <p class="p-4  text-sm text-gray-900 font-semibold">Success Rate Chart</p>
-    <Chart {options} class="py-6" />
-</div>
+<Chart {options} class="py-6" />
