@@ -1,7 +1,12 @@
 <script>
 import "../app.css";
-let { children } = $props();
-import { Navbar, NavBrand } from 'flowbite-svelte'
+let {
+    children
+} = $props();
+import {
+    Navbar,
+    NavBrand
+} from 'flowbite-svelte'
 import logo from '$lib/assets/images/logo.png'
 </script>
 

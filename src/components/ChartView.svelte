@@ -24,7 +24,7 @@ const {
 } = $props()
 
 let options = $derived({
-    series: pads?.map(pad => pad?.rates),
+    series: pads.map(pad => pad.rates),
     colors: ['#1A56DB', '#16BDCA', '#FDBA8C', '#E74694', '#9B1C1C'],
     chart: {
         height: 220,
@@ -72,7 +72,7 @@ let options = $derived({
             top: -2
         }
     },
-    labels: [...pads?.map(pad => pad?.name)],
+    labels: [...pads.map(pad => pad.name)],
     dataLabels: {
         enabled: false
     },

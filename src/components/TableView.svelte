@@ -33,7 +33,9 @@ const getBadgeClass = (status) => {
     }
 };
 
-const { pads } = $props()
+const {
+    pads
+} = $props()
 let selectedPad = $state(null);
 let showModal = $state(false);
 </script>
