@@ -17,7 +17,6 @@
   
     // Pads array passed from parent component
     export let pads = [];
-  
     // Function to generate style for markers based on pad status
     const generateMarker = (status) => {
       let color; // Default fill color
@@ -42,7 +41,7 @@
         image: new CircleStyle({
           radius: 8, // Marker size
           fill: new Fill({ color }), // Fill color based on status
-          stroke: new Stroke({ color: strokeColor, width: 1 }), // Optional border
+        //   stroke: new Stroke({ color: strokeColor, width: 1 }), // Optional border
         }),
       });
     };

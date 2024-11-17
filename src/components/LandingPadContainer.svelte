@@ -18,6 +18,7 @@ import {
     import ButtonFilter from './filter/ButtonFilter.svelte';
     import DropdownFilter from './filter/DropdownFilter.svelte';
     import MapView from './MapView.svelte';
+    import ChartView from './ChartView.svelte';
 
 export let pads = [];
 export let viewMode = 'table';
@@ -45,9 +46,10 @@ export let filter = ''
             <!-- Right column content -->
             <div class="flex flex-col gap-[26px]">
                 <MapView pads={pads?.map(pad => ({id: pad?.id,lat: pad?.location?.latitude, lon: pad?.location?.longitude, status: pad?.status}))} />
-                <div class="bg-gray-400 p-4">
-                    <p>This is the second row inside the right column.</p>
-                </div>
+                <ChartView 
+                pads={
+                pads
+                } />
             </div>
         </div>
     </div>

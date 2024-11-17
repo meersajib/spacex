@@ -25,18 +25,18 @@ import {
 } from 'svelte';
 import ButtonFilter from "../components/filter/ButtonFilter.svelte";
 import DropdownFilter from "../components/filter/DropdownFilter.svelte";
-    import LandingPadContainer from "../components/LandingPadContainer.svelte";
+import LandingPadContainer from "../components/LandingPadContainer.svelte";
 
-let viewMode = 'table'
-let filter = 0;
+let viewMode = $state('table')
+let filter = $state(0);
 
 // Filtering the landingPads
-$: filteredPads = $landingPads.filter(pad => {
+let filteredPads = $derived($landingPads.filter(pad => {
     if (filter === 0) return true;
     if (filter === 1) return pad.status === "active";
     if (filter === 2) return pad.status === "retired";
     if (filter === 3) return pad.status === "under construction";
-});
+}));
 
 // Fetch data on mount
 onMount(() => {
@@ -52,7 +52,6 @@ onMount(() => {
     </Navbar>
 
     <section class="pt-[50px] px-[100px]">
-      <LandingPadContainer bind:filter bind:viewMode pads={filteredPads} />
-        
+        <LandingPadContainer bind:filter bind:viewMode pads={filteredPads} />
     </section>
 </div>
