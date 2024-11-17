@@ -17,7 +17,7 @@ import logo from '$lib/assets/images/logo.png'
         </NavBrand>
     </Navbar>
 
-    <section class="pt-[50px] px-2.5 md:px-10 xl:px-[100px]">
+    <section class="pt-[50px] px-2.5 md:px-10 2xl:px-[100px]">
         {@render children()}
     </section>
 </div>

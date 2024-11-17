@@ -51,7 +51,7 @@ onMount(() => {
 });
 </script>
 
-<div class="flex flex-wrap lg:flex-nowrap gap-[40px]">
+<div class="lg:flex gap-[40px]">
     <div class="flex-1">
         <div class="flex items-start justify-between mb-[18px]">
             <!-- Button Filter -->
