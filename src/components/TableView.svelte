@@ -40,19 +40,19 @@ let selectedPad = $state(null);
 let showModal = $state(false);
 </script>
 
-<Table shadow class="w-full overflow-auto">
-    <TableHead class="bg-gray-50 h-[50px]">
-        <TableHeadCell class="text-gray-500 text-[12px] leading-[18px] px-4">Full Name</TableHeadCell>
-        <TableHeadCell class="text-gray-500 text-[12px] leading-[18px] px-4">Location Name</TableHeadCell>
-        <TableHeadCell class="text-gray-500 text-[12px] leading-[18px] px-4">Region</TableHeadCell>
-        <TableHeadCell class="text-gray-500 text-[12px] leading-[18px] px-4">Details</TableHeadCell>
-        <TableHeadCell class="text-gray-500 text-[12px] leading-[18px] px-4">Success Rate</TableHeadCell>
-        <TableHeadCell class="text-gray-500 text-[12px] leading-[18px] px-4">Wikipedia Link</TableHeadCell>
-        <TableHeadCell class="text-gray-500 text-[12px] leading-[18px] px-4">Status</TableHeadCell>
+<Table shadow class="w-full overflow-auto dark:border dark:border-gray-600">
+    <TableHead class="bg-gray-50 h-[50px] dark:bg-gray-700">
+        <TableHeadCell class="text-gray-500 dark:text-white text-[12px] leading-[18px] px-4">Full Name</TableHeadCell>
+        <TableHeadCell class="text-gray-500 dark:text-white text-[12px] leading-[18px] px-4">Location Name</TableHeadCell>
+        <TableHeadCell class="text-gray-500 dark:text-white text-[12px] leading-[18px] px-4">Region</TableHeadCell>
+        <TableHeadCell class="text-gray-500 dark:text-white text-[12px] leading-[18px] px-4">Details</TableHeadCell>
+        <TableHeadCell class="text-gray-500 dark:text-white text-[12px] leading-[18px] px-4">Success Rate</TableHeadCell>
+        <TableHeadCell class="text-gray-500 dark:text-white text-[12px] leading-[18px] px-4">Wikipedia Link</TableHeadCell>
+        <TableHeadCell class="text-gray-500 dark:text-white text-[12px] leading-[18px] px-4">Status</TableHeadCell>
     </TableHead>
     <TableBody tableBodyClass="divide-y">
         {#each pads as pad}
-        <TableBodyRow>
+        <TableBodyRow class='dark:bg-gray-700 border dark:border-gray-600'>
             <!-- Full Name -->
             <TableBodyCell class="px-5 py-2.5 text-sm font-semibold text-gray-900 max-w-[167px] text-ellipsis overflow-hidden">
                 {pad?.full_name}
@@ -90,7 +90,7 @@ let showModal = $state(false);
             <!-- Wikipedia Link -->
             <TableBodyCell class="px-5 py-2.5 text-sm font-semibold text-gray-900 max-w-[167px] text-ellipsis overflow-hidden">
                 <a href={pad?.wikipedia} target="_blank" rel="noopener noreferrer">
-                    <LinkOutline class="text-blue-default h-4 w-4" />
+                    <LinkOutline class="text-blue-default dark:text-white h-4 w-4" />
                 </a>
             </TableBodyCell>
 

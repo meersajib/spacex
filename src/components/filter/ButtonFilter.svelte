@@ -10,7 +10,7 @@ import {
 export let viewMode = ''
 </script>
 
-<ButtonGroup>
+<ButtonGroup class="dark:border dark:border-gray-600">
     <Button
         class={viewMode === "table" ? "bg-gray-200 text-blue-default rounded-s-[6px]" : "bg-white rounded-s-[6px]"}
         on:click={() => viewMode = 'table'}>

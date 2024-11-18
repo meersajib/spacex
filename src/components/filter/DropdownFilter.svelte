@@ -13,10 +13,10 @@ export let filter = 0
 </script>
 
 <div>
-    <Button class="bg-gray-200 text-gray-800 w-[186px] h-9 flex gap-2 px-0 border-1 border-[gray-200] rounded-lg">
+    <Button class="bg-gray-200 dark:border dark:bg-gray-700 text-gray-800 dark:text-white w-[186px] h-9 flex gap-2 px-0 border-1 border-[gray-200] dark:border-gray-600 rounded-lg">
         <AdjustmentsVerticalSolid class="w-5 h-5" />
         <span>Filter By Status</span>
-        <ChevronDownOutline class="w-6 h-6 ms-2 text-gray-800" />
+        <ChevronDownOutline class="w-6 h-6 ms-2 text-gray-800 dark:text-white" />
     </Button>
     <Dropdown class="w-full p-3 space-y-3 text-sm">
         <DropdownItem>
