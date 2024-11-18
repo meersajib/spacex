@@ -94,7 +94,12 @@ const updateMap = () => {
     fitMapToMarkers(coordinates);
 };
 
-onMount(() => {
+onMount(async () => {
+    const { Map } = await import('ol');
+    const { Tile } = await import('ol/layer');
+    const { OSM } = await import('ol/source');
+    const { View } = await import('ol');
+
     // Base OSM layer
     const tileLayer = new TileLayer({
         source: new OSM(),

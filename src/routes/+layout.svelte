@@ -11,24 +11,39 @@ import {
 import logo from '$lib/assets/images/logo.png'
 import darkLogo from '$lib/assets/images/white-logo.png'
 let btnClass = 'text-gray-800 dark:text-white bg-white dark:bg-gray-600 text-xl p-2 absolute top-5 right-5';
-import { onMount } from 'svelte';
-  let isDarkMode = false;
+import {
+    onMount
+} from 'svelte';
+import { browser } from '$app/environment';
 
-  onMount(() => {
+let isDarkMode = false;
+
+function updateDarkMode() {
+    if (!browser) return; // Ensure this only runs on the client
+    const html = document.documentElement;
+    if (isDarkMode) {
+        html.classList.add('dark');
+    } else {
+        html.classList.remove('dark');
+    }
+}
+
+onMount(() => {
     isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
+});
+updateDarkMode();
+
 </script>
 
 <div class="3xl:container bg-white dark:bg-gray-700 h-screen">
-        <Navbar class="h-20 shadow-[0px_1px_3px_0px_#0000001A] dark:shadow-transparent dark:border-gray-600 bg:white relative flex dark:bg-gray-600 items-center justify-center p-0">
-            <NavBrand href="/" class="flex items-center justify-center w-full">
-                <img src={logo} class="h-[38px] mx-auto block dark:hidden" alt="Spacex Logo" />
-                <img src={darkLogo} class="h-[38px] mx-auto hidden dark:block" alt="Spacex Logo" />
-            </NavBrand>
-            
-    
-        </Navbar>
-        <DarkMode {btnClass} />
+    <Navbar class="h-20 shadow-[0px_1px_3px_0px_#0000001A] dark:shadow-transparent dark:border-gray-600 bg:white relative flex dark:bg-gray-600 items-center justify-center p-0">
+        <NavBrand href="/" class="flex items-center justify-center w-full">
+            <img src={logo} class="h-[38px] mx-auto block dark:hidden" alt="Spacex Logo" />
+            <img src={darkLogo} class="h-[38px] mx-auto hidden dark:block" alt="Spacex Logo" />
+        </NavBrand>
+
+    </Navbar>
+    <DarkMode {btnClass} />
 
     <section class="pt-[50px] px-2.5 md:px-5 3xl:px-[100px]">
         {@render children()}
