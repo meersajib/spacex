@@ -27,8 +27,6 @@ cd spacex
 
 Run the following command to install all required dependencies:
 
-bash
-Copy code
 
 ```bash
 npm install
