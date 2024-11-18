@@ -49,8 +49,8 @@ let filteredPads = $derived($landingPads.filter(pad => {
 }));
 </script>
 
-<div class="lg:flex gap-[40px]">
-    <div class="flex-1">
+<div class="xl:flex xl:gap-5 3xl:gap-10 justify-center">
+    <div class="w-full xl:w-2/3">
         <div class="flex items-start justify-between mb-[18px]">
             <!-- Button Filter -->
             <ButtonFilter bind:viewMode />
@@ -69,11 +69,11 @@ let filteredPads = $derived($landingPads.filter(pad => {
         <Skeleton size="xxl" />
         {/if}
     </div>
-    <div class="w-full lg:w-[521px]">
+    <div class="w-full xl:w-1/3 2xl:w-[521px] gap-10">
         <!-- Right column content -->
-        <div class="flex flex-col gap-[26px]">
+        <div class="mt-10 xl:mt-0 flex flex-col sm:flex-row xl:flex-col gap-[26px]">
             <div style="box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.05), 0px 4px 6px -1px rgba(0, 0, 0, 0.10);"
-                class="rounded-lg border border-gray-default">
+                class="rounded-lg border border-gray-default w-full">
                 <p class="p-4  text-sm text-gray-900 font-semibold">Map View</p>
                 {#if filteredPads?.length}
                 <MapView pads={filteredPads?.map(pad => ({id: pad?.id,lat: pad?.location?.latitude, lon: pad?.location?.longitude, status: pad?.status}))} />
@@ -82,7 +82,7 @@ let filteredPads = $derived($landingPads.filter(pad => {
                 {/if}
             </div>
             <div style="box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.05), 0px 4px 6px -1px rgba(0, 0, 0, 0.10);"
-                class="rounded-lg border border-gray-default">
+                class="rounded-lg border border-gray-default w-full">
                 <p class="p-4  text-sm text-gray-900 font-semibold border-b border-gray-default">Success Rate Chart</p>
                 {#if filteredPads?.length}
                 <ChartView

@@ -11,7 +11,7 @@ export default {
       container: {
         center: true,
         screens: {
-          "2xl": "1920px"
+          "3xl": "1920px"
         },
       },
       colors: {
