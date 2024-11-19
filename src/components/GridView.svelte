@@ -1,8 +1,8 @@
 <script>
-  import { LinkOutline } from 'flowbite-svelte-icons';
-  import { Badge, Button } from 'flowbite-svelte';
-  import PadDetailsModal from './PadDetailsModal.svelte';
-  import { getBadgeClass } from '$lib/utils';
+  import { LinkOutline } from "flowbite-svelte-icons";
+  import { Badge, Button } from "flowbite-svelte";
+  import PadDetailsModal from "./PadDetailsModal.svelte";
+  import { getBadgeClass } from "$lib/utils";
 
   export let pads = [];
   let selectedPad = null;
@@ -21,13 +21,21 @@
           {pad?.status}
         </Badge>
       </div>
-      <p class="pad-text"><strong>Location Name:</strong> {pad?.location?.name}</p>
+      <p class="pad-text">
+        <strong>Location Name:</strong>
+        {pad?.location?.name}
+      </p>
       <p class="pad-text"><strong>Region:</strong> {pad?.location?.region}</p>
-      <p class="pad-text"><strong>Success Rate:</strong> {pad?.success_rate || 'N/A'}%</p>
+      <p class="pad-text">
+        <strong>Success Rate:</strong>
+        {pad?.success_rate || "N/A"}%
+      </p>
       <p class="pad-text">
         <strong>Wikipedia Link:</strong>
         <a href={pad?.wikipedia} target="_blank" rel="noopener noreferrer">
-          <LinkOutline class="text-blue-500 hover:text-blue-700 h-5 w-5 inline" />
+          <LinkOutline
+            class="text-blue-500 hover:text-blue-700 h-5 w-5 inline"
+          />
         </a>
       </p>
       <Button
@@ -45,7 +53,6 @@
 
 <PadDetailsModal pad={selectedPad} bind:open={showModal} />
 
-  
 <style>
   .grid-container {
     @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6;
@@ -67,4 +74,3 @@
     @apply mt-4 w-full bg-blue-default dark:bg-gray-500 text-white hover:bg-blue-600 text-sm py-2 rounded-md;
   }
 </style>
-  

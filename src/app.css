@@ -1,11 +1,4 @@
-/* Import Flowbite styles first */
 @import "flowbite";
-
-/* Import Tailwind’s base styles */
-@import "tailwindcss/base";
-
-/* Import Tailwind’s component styles */
-@import "tailwindcss/components";
-
-/* Import Tailwind’s utility classes */
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

@@ -1,23 +1,14 @@
 <script>
 import "../app.css";
-
-let {
-    children
-} = $props();
-import {
-    DarkMode,
-    Navbar,
-    NavBrand
-} from 'flowbite-svelte'
+import { DarkMode, Navbar, NavBrand } from 'flowbite-svelte'
 import logo from '$lib/assets/images/logo.png'
 import darkLogo from '$lib/assets/images/white-logo.png'
-let btnClass = 'text-gray-800 dark:text-white bg-white dark:bg-gray-600 text-xl p-2 absolute top-5 right-5';
-import {
-    onMount
-} from 'svelte';
+import { onMount } from 'svelte';
 import { browser } from '$app/environment';
 
+let { children } = $props();
 let isDarkMode = false;
+let btnClass = 'text-gray-800 dark:text-white bg-white dark:bg-gray-600 text-xl p-2 absolute top-5 right-5';
 
 function updateDarkMode() {
     if (!browser) return;

@@ -14,3 +14,10 @@ export const tableHeaders = [
   { label: "Wikipedia Link", class: "max-w-[167px]" },
   { label: "Status", class: "max-w-[167px]" },
 ];
+
+export const filters = [
+  { label: "all", value: 0 },
+  { label: "active", value: 1 },
+  { label: "retired", value: 2 },
+  { label: "under construction", value: 3 },
+];

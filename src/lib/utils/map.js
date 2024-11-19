@@ -55,7 +55,6 @@ export const fitMapToMarkers = (map, coordinates) => {
 // Function to update the map with new pad data
 export const updateMap = (map, vectorLayer, pads) => {
   if (!vectorLayer) return;
-
   const { vectorSource, coordinates } = generateFeatures(pads);
   vectorLayer.setSource(vectorSource);
   fitMapToMarkers(map, coordinates);
