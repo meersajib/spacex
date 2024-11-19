@@ -98,7 +98,7 @@
         @apply flex items-start justify-between mb-[18px];
     }
     .sidebar-content {
-        @apply w-full flex flex-col xl:w-1/3 2xl:w-[521px] gap-[26px];
+        @apply mt-[26px] xl:mt-0 w-full flex flex-col sm:flex-row xl:flex-col xl:w-1/3 2xl:w-[521px] gap-[26px];
     }
     .card {
         @apply p-0 rounded-lg border border-gray-default dark:border-gray-600 w-full shadow-[0px_2px_4px_-2px_rgba(0,0,0,0.05)_0px_4px_6px_-1px_rgba(0,0,0,0.10)];

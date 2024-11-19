@@ -22,74 +22,79 @@
     let showModal = false; // Modal visibility state
   </script>
   
-  <Table shadow class="table-container">
-    <!-- Table Header -->
-    <TableHead class="table-head">
-      {#each tableHeaders as head}
-        <TableHeadCell class={`table-head-cell ${head.class}`}>{head.label}</TableHeadCell>
-      {/each}
-    </TableHead>
-  
-    <!-- Table Body -->
-    <TableBody class="table-body">
-      {#each pads as pad}
-        <TableBodyRow>
-          <!-- Full Name -->
-          <TableBodyCell class="table-body-cell">{pad?.full_name}</TableBodyCell>
-  
-          <!-- Location Name -->
-          <TableBodyCell class="table-body-cell">{pad?.location?.name}</TableBodyCell>
-  
-          <!-- Region -->
-          <TableBodyCell class="table-body-cell">{pad?.location?.region}</TableBodyCell>
-  
-          <!-- Details -->
-          <TableBodyCell class="table-body-cell">
-            <Button on:click={() => { selectedPad = pad; showModal = true; }}>
-                <Badge class="badge-default">View Details</Badge>
-            </Button>
-          </TableBodyCell>
-  
-          <!-- Success Rate -->
-          <TableBodyCell class="table-body-cell">
-            {#if pad?.success_rate > 0}
-              <div>
-                <Progressbar
-                  progress={pad.success_rate}
-                  size="h-1.5"
-                  progressClass="progress-bar"
-                />
-                <div class="success-rate-text">{pad.success_rate}%</div>
-              </div>
-            {:else}
-              N/A
-            {/if}
-          </TableBodyCell>
-  
-          <!-- Wikipedia Link -->
-          <TableBodyCell class="table-body-cell">
-            <a href={pad?.wikipedia} target="_blank" rel="noopener noreferrer">
-              <LinkOutline class="link-icon" />
-            </a>
-          </TableBodyCell>
-  
-          <!-- Status -->
-          <TableBodyCell class="table-body-cell">
-            <Badge
-              class={`${getBadgeClass(pad?.status).bg} ${getBadgeClass(pad?.status).text} capitalize`}
-            >
-              {pad?.status}
-            </Badge>
-          </TableBodyCell>
-        </TableBodyRow>
-      {/each}
-    </TableBody>
-  </Table>
+  <div class="table-wrapper">
+    <Table shadow>
+      <!-- Table Header -->
+      <TableHead class="table-head">
+        {#each tableHeaders as head}
+          <TableHeadCell class={`table-head-cell ${head.class}`}>{head.label}</TableHeadCell>
+        {/each}
+      </TableHead>
+    
+      <!-- Table Body -->
+      <TableBody class="table-body">
+        {#each pads as pad}
+          <TableBodyRow>
+            <!-- Full Name -->
+            <TableBodyCell class="table-body-cell">{pad?.full_name}</TableBodyCell>
+    
+            <!-- Location Name -->
+            <TableBodyCell class="table-body-cell">{pad?.location?.name}</TableBodyCell>
+    
+            <!-- Region -->
+            <TableBodyCell class="table-body-cell">{pad?.location?.region}</TableBodyCell>
+    
+            <!-- Details -->
+            <TableBodyCell class="table-body-cell">
+              <Button on:click={() => { selectedPad = pad; showModal = true; }}>
+                  <Badge class="badge-default">View Details</Badge>
+              </Button>
+            </TableBodyCell>
+    
+            <!-- Success Rate -->
+            <TableBodyCell class="table-body-cell">
+              {#if pad?.success_rate > 0}
+                <div>
+                  <Progressbar
+                    progress={pad.success_rate}
+                    size="h-1.5"
+                    progressClass="progress-bar"
+                  />
+                  <div class="success-rate-text">{pad.success_rate}%</div>
+                </div>
+              {:else}
+                N/A
+              {/if}
+            </TableBodyCell>
+    
+            <!-- Wikipedia Link -->
+            <TableBodyCell class="table-body-cell">
+              <a href={pad?.wikipedia} target="_blank" rel="noopener noreferrer">
+                <LinkOutline class="link-icon" />
+              </a>
+            </TableBodyCell>
+    
+            <!-- Status -->
+            <TableBodyCell class="table-body-cell">
+              <Badge
+                class={`${getBadgeClass(pad?.status).bg} ${getBadgeClass(pad?.status).text} capitalize`}
+              >
+                {pad?.status}
+              </Badge>
+            </TableBodyCell>
+          </TableBodyRow>
+        {/each}
+      </TableBody>
+    </Table>
+  </div>
 
   <!-- Modal -->
   <PadDetailsModal pad={selectedPad} bind:open={showModal} />
   
   <style>
+    :global(.table-wrapper .relative){
+      @apply border rounded-[12px];
+    }
     :global(.table-container) {
       @apply w-full overflow-auto dark:border dark:border-gray-600;
     }
@@ -99,11 +104,14 @@
     }
   
     :global(.table-head-cell) {
-      @apply px-4 text-[12px] font-bold leading-[18px];
+      @apply px-4 text-[12px] font-bold leading-[18px] dark:text-white;
+    }
+    :global(.table-body-row) {
+      @apply bg-blue-600;
     }
   
     :global(.table-body-cell) {
-      @apply px-5 py-2.5 text-[12px] font-semibold text-gray-900 max-w-[167px] text-ellipsis overflow-hidden bg-white dark:bg-gray-400;
+      @apply px-5 py-2.5 text-[12px] font-semibold text-gray-900 max-w-[167px] text-ellipsis overflow-hidden bg-white dark:bg-gray-600;
     }
   
     :global(.badge-default) {
