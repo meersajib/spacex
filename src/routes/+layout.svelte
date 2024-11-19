@@ -44,7 +44,7 @@ updateDarkMode();
 
 <style>
     .body-wrapper {
-        @apply bg-white dark:bg-gray-700 h-screen;
+        @apply bg-white dark:bg-gray-700 h-full;
     }
     :global(.nav-wrapper) {
         @apply h-20 shadow-[0px_1px_3px_0px_#0000001A] dark:shadow-transparent dark:border-gray-600 bg-white relative flex dark:bg-gray-600 items-center justify-center p-0;
