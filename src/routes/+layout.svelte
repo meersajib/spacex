@@ -10,20 +10,18 @@ let { children } = $props();
 let isDarkMode = false;
 let btnClass = 'text-gray-800 dark:text-white bg-white dark:bg-gray-600 text-xl p-2 absolute top-5 right-5';
 
-function updateDarkMode() {
-    if (!browser) return;
+function toggleDarkMode() {
     const html = document.documentElement;
+    const isDarkMode = html.classList.contains('dark');
     if (isDarkMode) {
-        html.classList.add('dark');
-    } else {
         html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+    } else {
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
     }
 }
 
-onMount(() => {
-    isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-});
-updateDarkMode();
 
 </script>
 
@@ -44,7 +42,7 @@ updateDarkMode();
 
 <style>
     .body-wrapper {
-        @apply bg-white dark:bg-gray-700 h-full;
+        @apply bg-white dark:bg-gray-700 min-h-screen	;
     }
     :global(.nav-wrapper) {
         @apply h-20 shadow-[0px_1px_3px_0px_#0000001A] dark:shadow-transparent dark:border-gray-600 bg-white relative flex dark:bg-gray-600 items-center justify-center p-0;
