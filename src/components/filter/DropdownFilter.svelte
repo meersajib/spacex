@@ -7,11 +7,11 @@
   </script>
   
   <div>
-    <Button class="filter-btn">
-      <AdjustmentsVerticalSolid class="icon" />
-      <span class="filter-text">Filter By Status</span>
-      <ChevronDownOutline class="icon-chevron" />
-    </Button>
+    <div class="filter-btn">
+        <AdjustmentsVerticalSolid />
+        <span class="filter-text">Filter By Status</span>
+        <ChevronDownOutline class="w-5 h-5 text-gray-800 dark:text-white" />
+    </div>
   
     <Dropdown class="dropdown">
       {#each FILTER_OPTIONS as { label, value }}
@@ -25,24 +25,14 @@
   </div>
   
   <style>
-    :global(.filter-btn) {
-      @apply bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white w-full h-9 flex items-center gap-2 px-4 border border-gray-200 dark:border-gray-600 rounded-lg;
+    .filter-btn {
+      @apply cursor-pointer bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white w-full h-9 flex items-center gap-2 px-4 border border-gray-200 dark:border-gray-600 rounded-lg;
     }
 
-    :global(.filter-text) {
+    .filter-text {
       @apply text-gray-800 dark:text-white;
     }
   
-    :global(.icon, .icon-chevron) {
-      @apply w-5 h-5 text-gray-800 dark:text-white;
-    }
-  
-    :global(.icon-chevron) {
-      @apply ml-2 text-gray-800 dark:text-white;
-    }
-  
-    :global(.dropdown) {
-      @apply w-full mt-2 p-2 space-y-2 text-sm;
-    }
+    
   </style>
   

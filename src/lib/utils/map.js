@@ -1,5 +1,3 @@
-// src/lib/utils/map.js
-
 import Style from "ol/style/Style";
 import CircleStyle from "ol/style/Circle";
 import Fill from "ol/style/Fill";
@@ -16,7 +14,7 @@ export const getMarkerColor = (status) => {
     retired: "#9B1C1C",
     "under construction": "#1E429F",
   };
-  return colors[status] || "#CCCCCC"; // Default color
+  return colors[status] || "#CCCCCC";
 };
 
 // Function to create a marker style for the map
@@ -35,9 +33,9 @@ export const generateFeatures = (pads) => {
 
   pads.forEach((pad) => {
     if (pad.lon !== undefined && pad.lat !== undefined) {
-      const coord = fromLonLat([pad.lon, pad.lat]); // Convert lon/lat to map projection
+      const coord = fromLonLat([pad.lon, pad.lat]);
       const feature = new Feature({ geometry: new Point(coord) });
-      feature.setStyle(createMarkerStyle(pad.status)); // Apply style to feature
+      feature.setStyle(createMarkerStyle(pad.status));
       vectorSource.addFeature(feature);
       coordinates.push(coord);
     }
@@ -49,7 +47,7 @@ export const generateFeatures = (pads) => {
 // Function to fit the map view to the markers
 export const fitMapToMarkers = (map, coordinates) => {
   if (coordinates.length > 0) {
-    const extent = boundingExtent(coordinates); // Get bounding box of all coordinates
+    const extent = boundingExtent(coordinates);
     map.getView().fit(extent, { padding: [20, 20, 20, 20], maxZoom: 8 });
   }
 };
@@ -59,6 +57,6 @@ export const updateMap = (map, vectorLayer, pads) => {
   if (!vectorLayer) return;
 
   const { vectorSource, coordinates } = generateFeatures(pads);
-  vectorLayer.setSource(vectorSource); // Update vector layer source
-  fitMapToMarkers(map, coordinates); // Adjust the map view
+  vectorLayer.setSource(vectorSource);
+  fitMapToMarkers(map, coordinates);
 };

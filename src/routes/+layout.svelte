@@ -40,7 +40,7 @@ updateDarkMode();
     <Navbar class="nav-wrapper">
         <NavBrand href="/" class="nav-brand">
             <img src={logo} class="logo" alt="Spacex Logo" />
-            <img src={darkLogo} class="dark:log" alt="Spacex DarkMode Logo" />
+            <img src={darkLogo} class="hidden dark:flex" alt="Spacex Dark mode Logo" />
         </NavBrand>
 
     </Navbar>
@@ -52,7 +52,7 @@ updateDarkMode();
 </div>
 
 <style>
-    :global(.body-wrapper) {
+    .body-wrapper {
         @apply bg-white dark:bg-gray-700 h-screen;
     }
     :global(.nav-wrapper) {
@@ -61,10 +61,10 @@ updateDarkMode();
     :global(.nav-brand) {
         @apply flex items-center justify-center w-full;
     }
-    :global(.logo) {
+   .logo {
         @apply h-[38px] mx-auto block dark:hidden;
     }
-    :global(.dark-logo) {
+    .dark-logo {
         @apply hidden dark:block;
     }
 </style>

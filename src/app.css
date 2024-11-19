@@ -1,5 +1,5 @@
 /* Import Flowbite styles first */
-@import 'flowbite';
+@import "flowbite";
 
 /* Import Tailwind’s base styles */
 @import "tailwindcss/base";
