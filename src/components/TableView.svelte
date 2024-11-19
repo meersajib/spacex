@@ -93,7 +93,7 @@
   
   <style>
     :global(.table-wrapper .relative){
-      @apply border rounded-[12px];
+      @apply border border-gray-200 dark:border-gray-400  rounded-[12px];
     }
     :global(.table-container) {
       @apply w-full overflow-auto dark:border dark:border-gray-600;

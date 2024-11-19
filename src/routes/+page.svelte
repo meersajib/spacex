@@ -7,10 +7,7 @@
         ImagePlaceholder
     } from "flowbite-svelte";
     import { DarkMode } from 'flowbite-svelte';
-    import {
-        landingPads,
-        fetchLandingPads
-    } from '../stores/landpadStore';
+    
     import { onMount } from 'svelte';
     import ButtonFilter from "../components/filter/ButtonFilter.svelte";
     import DropdownFilter from "../components/filter/DropdownFilter.svelte";
@@ -21,17 +18,16 @@
     
     let viewMode = $state('table');
     let filter = $state(0);
-    
-    onMount(() => {
-        fetchLandingPads();
-    });
-    
-    let filteredPads = $derived($landingPads.filter(pad => {
+    const { data } = $props();
+    const { landpads } = data;
+    console.log('landpads',landpads)
+    let filteredPads = $derived(landpads.filter(pad => {
         if (filter === 0) return true;
         if (filter === 1) return pad.status === "active";
         if (filter === 2) return pad.status === "retired";
         if (filter === 3) return pad.status === "under construction";
     }));
+
     </script>
     
     <div class="layout-wrapper">
