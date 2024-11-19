@@ -38,18 +38,19 @@
       {#each pads as pad}
         <TableBodyRow>
           <!-- Full Name -->
-          <TableBodyCell class="table-body-cell">{pad?.full_name}</TableBodyCell
-          >
+          <TableBodyCell class="table-body-cell"
+            >{pad?.full_name}
+          </TableBodyCell>
 
           <!-- Location Name -->
           <TableBodyCell class="table-body-cell"
-            >{pad?.location?.name}</TableBodyCell
-          >
+            >{pad?.location?.name}
+          </TableBodyCell>
 
           <!-- Region -->
           <TableBodyCell class="table-body-cell"
-            >{pad?.location?.region}</TableBodyCell
-          >
+            >{pad?.location?.region}
+          </TableBodyCell>
 
           <!-- Details -->
           <TableBodyCell class="table-body-cell">
