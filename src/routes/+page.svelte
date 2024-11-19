@@ -14,7 +14,7 @@
   import GridView from "../components/GridView.svelte";
   import MapView from "../components/MapView.svelte";
   import ChartView from "../components/ChartView.svelte";
-  import { filters } from "$lib/utils/constants";
+  import { FILTER_OPTIONS as filters } from "$lib/utils/constants";
 
   let viewMode = $state("table");
   let filter = $state(0);

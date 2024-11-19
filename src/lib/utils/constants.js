@@ -1,8 +1,8 @@
 export const FILTER_OPTIONS = [
-  { label: "All", value: 0 },
-  { label: "Active", value: 1 },
-  { label: "Retired", value: 2 },
-  { label: "Under Construction", value: 3 },
+  { label: "all", value: 0 },
+  { label: "active", value: 1 },
+  { label: "retired", value: 2 },
+  { label: "under construction", value: 3 },
 ];
 
 export const tableHeaders = [
@@ -13,11 +13,4 @@ export const tableHeaders = [
   { label: "Success Rate", class: "max-w-[150px]" },
   { label: "Wikipedia Link", class: "max-w-[167px]" },
   { label: "Status", class: "max-w-[167px] rounded-tr-xl" },
-];
-
-export const filters = [
-  { label: "all", value: 0 },
-  { label: "active", value: 1 },
-  { label: "retired", value: 2 },
-  { label: "under construction", value: 3 },
 ];

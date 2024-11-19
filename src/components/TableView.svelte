@@ -11,15 +11,13 @@
     TableBodyCell,
   } from "flowbite-svelte";
   import { LinkOutline } from "flowbite-svelte-icons";
-  import { tableHeaders } from "$lib/utils/constants"; // Table header definitions
-  import { getBadgeClass } from "$lib/utils"; // Utility for badge classes
-  import PadDetailsModal from "./PadDetailsModal.svelte"; // External modal component
+  import { tableHeaders } from "$lib/utils/constants";
+  import { getBadgeClass } from "$lib/utils";
+  import PadDetailsModal from "./PadDetailsModal.svelte";
+  export let pads = [];
 
-  export let pads = []; // Pads data
-
-  // Local state
-  let selectedPad = null; // Currently selected pad for modal
-  let showModal = false; // Modal visibility state
+  let selectedPad = null;
+  let showModal = false;
 </script>
 
 <div class="table-wrapper">

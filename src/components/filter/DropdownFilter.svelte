@@ -19,7 +19,7 @@
   <Dropdown class="dropdown">
     {#each FILTER_OPTIONS as { label, value }}
       <DropdownItem>
-        <Radio name="filter" bind:group={filter} {value}>
+        <Radio class="capitalize" name="filter" bind:group={filter} {value}>
           {label}
         </Radio>
       </DropdownItem>
