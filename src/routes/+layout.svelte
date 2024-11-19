@@ -20,7 +20,7 @@ import { browser } from '$app/environment';
 let isDarkMode = false;
 
 function updateDarkMode() {
-    if (!browser) return; // Ensure this only runs on the client
+    if (!browser) return;
     const html = document.documentElement;
     if (isDarkMode) {
         html.classList.add('dark');
@@ -40,7 +40,7 @@ updateDarkMode();
     <Navbar class="nav-wrapper">
         <NavBrand href="/" class="nav-brand">
             <img src={logo} class="logo" alt="Spacex Logo" />
-            <img src={darkLogo} class="hidden dark:flex" alt="Spacex Dark mode Logo" />
+            <img src={darkLogo} class="dark-logo" alt="Spacex Dark mode Logo" />
         </NavBrand>
 
     </Navbar>
@@ -62,9 +62,9 @@ updateDarkMode();
         @apply flex items-center justify-center w-full;
     }
    .logo {
-        @apply h-[38px] mx-auto block dark:hidden;
+        @apply h-[38px] mx-auto flex dark:hidden;
     }
     .dark-logo {
-        @apply hidden dark:block;
+        @apply hidden dark:flex;
     }
 </style>

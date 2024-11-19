@@ -101,12 +101,9 @@
     :global(.table-head-cell) {
       @apply px-4 text-[12px] font-bold leading-[18px];
     }
-    :global(.table-body-row) {
-      @apply bg-blue-600;
-    }
   
     :global(.table-body-cell) {
-      @apply px-5 py-2.5 text-[12px] font-semibold text-gray-900 max-w-[167px] text-ellipsis overflow-hidden bg-white dark:bg-gray-800;
+      @apply px-5 py-2.5 text-[12px] font-semibold text-gray-900 max-w-[167px] text-ellipsis overflow-hidden bg-white dark:bg-gray-400;
     }
   
     :global(.badge-default) {
