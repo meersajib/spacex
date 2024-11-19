@@ -7,7 +7,6 @@
     ImagePlaceholder,
   } from "flowbite-svelte";
   import { DarkMode } from "flowbite-svelte";
-
   import { onMount } from "svelte";
   import ButtonFilter from "../components/filter/ButtonFilter.svelte";
   import DropdownFilter from "../components/filter/DropdownFilter.svelte";

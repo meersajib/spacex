@@ -1,5 +1,6 @@
 <script>
   import { Modal } from "flowbite-svelte";
+
   export let pad = null; // Pad data to display
   export let open = false; // Modal open state
 </script>

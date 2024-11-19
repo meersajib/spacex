@@ -7,7 +7,6 @@
   import OSM from "ol/source/OSM";
   import VectorLayer from "ol/layer/Vector";
   import VectorSource from "ol/source/Vector";
-
   import { updateMap } from "$lib/utils/map";
 
   export let pads = [];
