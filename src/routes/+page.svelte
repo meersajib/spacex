@@ -69,7 +69,7 @@
       <p class="card-title bordered">Success Rate Chart</p>
       {#if filteredPads?.length}
         <ChartView
-          pads={filteredPads?.map((pad) => ({
+          pads={landpads?.filter(pad => pad?.success_rate > 0)?.map((pad) => ({
             id: pad?.id,
             name: pad?.location?.name,
             rates: pad?.success_rate,
