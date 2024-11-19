@@ -1,5 +1,6 @@
 <script>
 import "../app.css";
+
 let {
     children
 } = $props();
@@ -35,11 +36,11 @@ updateDarkMode();
 
 </script>
 
-<div class="3xl:container bg-white dark:bg-gray-700 h-screen">
-    <Navbar class="h-20 shadow-[0px_1px_3px_0px_#0000001A] dark:shadow-transparent dark:border-gray-600 bg:white relative flex dark:bg-gray-600 items-center justify-center p-0">
-        <NavBrand href="/" class="flex items-center justify-center w-full">
-            <img src={logo} class="h-[38px] mx-auto block dark:hidden" alt="Spacex Logo" />
-            <img src={darkLogo} class="h-[38px] mx-auto hidden dark:block" alt="Spacex Logo" />
+<div class="body-wrapper 3xl:container">
+    <Navbar class="nav-wrapper">
+        <NavBrand href="/" class="nav-brand">
+            <img src={logo} class="logo" alt="Spacex Logo" />
+            <img src={darkLogo} class="dark:log" alt="Spacex DarkMode Logo" />
         </NavBrand>
 
     </Navbar>
@@ -49,3 +50,21 @@ updateDarkMode();
         {@render children()}
     </section>
 </div>
+
+<style>
+    :global(.body-wrapper) {
+        @apply bg-white dark:bg-gray-700 h-screen;
+    }
+    :global(.nav-wrapper) {
+        @apply h-20 shadow-[0px_1px_3px_0px_#0000001A] dark:shadow-transparent dark:border-gray-600 bg-white relative flex dark:bg-gray-600 items-center justify-center p-0;
+    }
+    :global(.nav-brand) {
+        @apply flex items-center justify-center w-full;
+    }
+    :global(.logo) {
+        @apply h-[38px] mx-auto block dark:hidden;
+    }
+    :global(.dark-logo) {
+        @apply hidden dark:block;
+    }
+</style>

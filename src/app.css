@@ -1,5 +1,11 @@
+/* Import Flowbite styles first */
 @import 'flowbite';
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
 
+/* Import Tailwind’s base styles */
+@import "tailwindcss/base";
+
+/* Import Tailwind’s component styles */
+@import "tailwindcss/components";
+
+/* Import Tailwind’s utility classes */
+@import "tailwindcss/utilities";

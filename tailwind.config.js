@@ -1,8 +1,9 @@
-/** @type {import('tailwindcss').Config} */
-import flowbitePlugin from 'flowbite/plugin';
-
+// tailwind.config.js
 export default {
-  content: ["./src/**/*.{html,js,svelte,ts}"],
+  content: [
+    "./src/**/*.{html,js,svelte,ts}", // Add your file paths here
+    "node_modules/flowbite/**/*.js",  // Make sure Flowbite's components are included
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -11,7 +12,7 @@ export default {
       container: {
         center: true,
         screens: {
-          "3xl": "1920px"
+          "3xl": "1920px", // Custom container width
         },
       },
       colors: {
@@ -44,5 +45,8 @@ export default {
       }
     }
   },
-  plugins: [require("@tailwindcss/typography"), flowbitePlugin]
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("flowbite/plugin"),  // Directly requiring Flowbite plugin
+  ],
 };

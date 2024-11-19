@@ -1,121 +1,128 @@
 <script>
-import {
-    Badge,
-    Button,
-    Modal,
-    Progressbar,
-    Table,
-    TableHead,
-    TableHeadCell,
-    TableBody,
-    TableBodyRow,
-    TableBodyCell
-} from 'flowbite-svelte';
-import {
-    LinkOutline
-} from 'flowbite-svelte-icons';
-
-// Function to get badges background and text color class
-const getBadgeClass = (status) => {
-    switch (status) {
-        case 'active':
-            return {
-                bg: 'bg-green-100', text: 'text-green-800'
-            };
-        case 'retired':
-            return {
-                bg: 'bg-red-100', text: 'text-red-800'
-            };
-        default:
-            return {
-                bg: 'bg-primary-100', text: 'text-primary-800'
-            };
-    }
-};
-
-const {
-    pads
-} = $props()
-let selectedPad = $state(null);
-let showModal = $state(false);
-</script>
-
-<Table shadow class="w-full overflow-auto dark:border dark:border-gray-600">
-    <TableHead class="bg-gray-50 h-[50px] dark:bg-gray-700">
-        <TableHeadCell class="text-gray-500 dark:text-white text-[12px] leading-[18px] px-4">Full Name</TableHeadCell>
-        <TableHeadCell class="text-gray-500 dark:text-white text-[12px] leading-[18px] px-4">Location Name</TableHeadCell>
-        <TableHeadCell class="text-gray-500 dark:text-white text-[12px] leading-[18px] px-4">Region</TableHeadCell>
-        <TableHeadCell class="text-gray-500 dark:text-white text-[12px] leading-[18px] px-4">Details</TableHeadCell>
-        <TableHeadCell class="text-gray-500 dark:text-white text-[12px] leading-[18px] px-4">Success Rate</TableHeadCell>
-        <TableHeadCell class="text-gray-500 dark:text-white text-[12px] leading-[18px] px-4">Wikipedia Link</TableHeadCell>
-        <TableHeadCell class="text-gray-500 dark:text-white text-[12px] leading-[18px] px-4">Status</TableHeadCell>
+    import {
+      Badge,
+      Button,
+      Progressbar,
+      Table,
+      TableHead,
+      TableHeadCell,
+      TableBody,
+      TableBodyRow,
+      TableBodyCell,
+    } from 'flowbite-svelte';
+    import { LinkOutline } from 'flowbite-svelte-icons';
+    import { tableHeaders } from '$lib/utils/constants'; // Table header definitions
+    import { getBadgeClass } from '$lib/utils'; // Utility for badge classes
+    import PadDetailsModal from './PadDetailsModal.svelte'; // External modal component
+  
+    export let pads = []; // Pads data
+  
+    // Local state
+    let selectedPad = null; // Currently selected pad for modal
+    let showModal = false; // Modal visibility state
+  </script>
+  
+  <Table shadow class="table-container">
+    <!-- Table Header -->
+    <TableHead class="table-head">
+      {#each tableHeaders as head}
+        <TableHeadCell class={`table-head-cell ${head.class}`}>{head.label}</TableHeadCell>
+      {/each}
     </TableHead>
-    <TableBody tableBodyClass="divide-y">
-        {#each pads as pad}
-        <TableBodyRow class='dark:bg-gray-700 border dark:border-gray-600'>
-            <!-- Full Name -->
-            <TableBodyCell class="px-5 py-2.5 text-sm font-semibold text-gray-900 max-w-[167px] text-ellipsis overflow-hidden">
-                {pad?.full_name}
-            </TableBodyCell>
-
-            <!-- Location Name -->
-            <TableBodyCell class="px-5 py-2.5 text-sm font-semibold text-gray-900 max-w-[167px] text-ellipsis overflow-hidden">
-                {pad?.location?.name}
-            </TableBodyCell>
-
-            <!-- Region -->
-            <TableBodyCell class="px-5 py-2.5 text-sm font-semibold text-gray-900 max-w-[167px] text-ellipsis overflow-hidden">
-                {pad?.location?.region}
-            </TableBodyCell>
-
-            <!-- Details -->
-            <TableBodyCell class="px-5 py-2.5 text-[12px] font-bold text-gray-900 max-w-[170px] text-ellipsis overflow-hidden">
-                <Button on:click={() => { selectedPad = pad; showModal = true; }}>
-                    <Badge class="bg-gray-100 text-gray-900 px-2.5 cursor-pointer">View Details</Badge>
-                </Button>
-            </TableBodyCell>
-
-            <!-- Success Rate -->
-            <TableBodyCell class="px-5 py-2.5 text-sm font-semibold text-gray-500 max-w-[150px]">
-                {#if pad?.success_rate > 0}
-                <div>
-                    <Progressbar progress={pad?.success_rate} size="h-1.5" progressClass="bg-green-default" />
-                    <div class="mb-1 text-base">{pad?.success_rate}%</div>
-                </div>
-                {:else}
-                N/A
-                {/if}
-            </TableBodyCell>
-
-            <!-- Wikipedia Link -->
-            <TableBodyCell class="px-5 py-2.5 text-sm font-semibold text-gray-900 max-w-[167px] text-ellipsis overflow-hidden">
-                <a href={pad?.wikipedia} target="_blank" rel="noopener noreferrer">
-                    <LinkOutline class="text-blue-default dark:text-white h-4 w-4" />
-                </a>
-            </TableBodyCell>
-
-            <!-- Status -->
-            <TableBodyCell class="px-5 py-2.5 text-sm font-semibold text-gray-900 max-w-[167px] text-ellipsis overflow-hidden">
-                <Badge
-                    class={`${getBadgeClass(pad?.status).bg} ${getBadgeClass(pad?.status).text} capitalize`}
-                    >
-                    {pad?.status}
-                </Badge>
-            </TableBodyCell>
+  
+    <!-- Table Body -->
+    <TableBody class="table-body">
+      {#each pads as pad}
+        <TableBodyRow>
+          <!-- Full Name -->
+          <TableBodyCell class="table-body-cell">{pad?.full_name}</TableBodyCell>
+  
+          <!-- Location Name -->
+          <TableBodyCell class="table-body-cell">{pad?.location?.name}</TableBodyCell>
+  
+          <!-- Region -->
+          <TableBodyCell class="table-body-cell">{pad?.location?.region}</TableBodyCell>
+  
+          <!-- Details -->
+          <TableBodyCell class="table-body-cell">
+            <Button on:click={() => { selectedPad = pad; showModal = true; }}>
+                <Badge class="badge-default">View Details</Badge>
+            </Button>
+          </TableBodyCell>
+  
+          <!-- Success Rate -->
+          <TableBodyCell class="table-body-cell">
+            {#if pad?.success_rate > 0}
+              <div>
+                <Progressbar
+                  progress={pad.success_rate}
+                  size="h-1.5"
+                  progressClass="progress-bar"
+                />
+                <div class="success-rate-text">{pad.success_rate}%</div>
+              </div>
+            {:else}
+              N/A
+            {/if}
+          </TableBodyCell>
+  
+          <!-- Wikipedia Link -->
+          <TableBodyCell class="table-body-cell">
+            <a href={pad?.wikipedia} target="_blank" rel="noopener noreferrer">
+              <LinkOutline class="link-icon" />
+            </a>
+          </TableBodyCell>
+  
+          <!-- Status -->
+          <TableBodyCell class="table-body-cell">
+            <Badge
+              class={`${getBadgeClass(pad?.status).bg} ${getBadgeClass(pad?.status).text} capitalize`}
+            >
+              {pad?.status}
+            </Badge>
+          </TableBodyCell>
         </TableBodyRow>
-        {/each}
+      {/each}
     </TableBody>
-</Table>
-<!-- Modal -->
-{#if showModal && selectedPad}
-<Modal
-    title={selectedPad?.full_name}
-    bind:open={showModal}
-    outsideclose
-    class="w-full sm:min-h-[360px] sm:w-3/4 md:w-[640px]"
-    classHeader="p-6 text-lg text-gray-900"
-    classBackdrop="inset-0 z-40 bg-[rgba(0,0,0,0.5)]"
-    >
-    <p class="text-sm text-gray-500">{selectedPad?.details}</p>
-</Modal>
-{/if}
+  </Table>
+
+  <!-- Modal -->
+  <PadDetailsModal pad={selectedPad} bind:open={showModal} />
+  
+  <style>
+    :global(.table-container) {
+      @apply w-full overflow-auto dark:border dark:border-gray-600;
+    }
+  
+    :global(.table-head) {
+      @apply bg-gray-50 h-[50px] text-gray-500 dark:bg-gray-600 dark:text-white text-left;
+    }
+  
+    :global(.table-head-cell) {
+      @apply px-4 text-[12px] font-bold leading-[18px];
+    }
+    :global(.table-body-row) {
+      @apply bg-blue-600;
+    }
+  
+    :global(.table-body-cell) {
+      @apply px-5 py-2.5 text-[12px] font-semibold text-gray-900 max-w-[167px] text-ellipsis overflow-hidden bg-white dark:bg-gray-800;
+    }
+  
+    :global(.badge-default) {
+      @apply bg-gray-100 text-gray-900 px-2.5 cursor-pointer;
+    }
+  
+    :global(.progress-bar) {
+      @apply bg-green-default;
+    }
+  
+    :global(.success-rate-text) {
+      @apply mb-1 text-base;
+    }
+  
+    :global(.link-icon) {
+      @apply text-blue-default dark:text-white h-4 w-4;
+    }
+  </style>
+  

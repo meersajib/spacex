@@ -1,35 +1,48 @@
 <script>
-import {
-    Button,
-    Dropdown,
-    DropdownItem,
-    Radio
-} from 'flowbite-svelte'
-import {
-    AdjustmentsVerticalSolid,
-    ChevronDownOutline
-} from 'flowbite-svelte-icons'
-export let filter = 0
-</script>
-
-<div>
-    <Button class="bg-gray-200 dark:border dark:bg-gray-700 text-gray-800 dark:text-white w-[186px] h-9 flex gap-2 px-0 border-1 border-[gray-200] dark:border-gray-600 rounded-lg">
-        <AdjustmentsVerticalSolid class="w-5 h-5" />
-        <span>Filter By Status</span>
-        <ChevronDownOutline class="w-6 h-6 ms-2 text-gray-800 dark:text-white" />
+    import { FILTER_OPTIONS } from '$lib/utils/constants';
+    import { Button, Dropdown, DropdownItem, Radio } from 'flowbite-svelte';
+    import { AdjustmentsVerticalSolid, ChevronDownOutline } from 'flowbite-svelte-icons';
+  
+    export let filter = 0; // Externally controlled filter state
+  </script>
+  
+  <div>
+    <Button class="filter-btn">
+      <AdjustmentsVerticalSolid class="icon" />
+      <span class="filter-text">Filter By Status</span>
+      <ChevronDownOutline class="icon-chevron" />
     </Button>
-    <Dropdown class="w-full p-3 space-y-3 text-sm">
+  
+    <Dropdown class="dropdown">
+      {#each FILTER_OPTIONS as { label, value }}
         <DropdownItem>
-            <Radio name="filter" bind:group={filter} value={0}>All</Radio>
+          <Radio name="filter" bind:group={filter} value={value}>
+            {label}
+          </Radio>
         </DropdownItem>
-        <DropdownItem>
-            <Radio name="filter" bind:group={filter} value={1}>Active</Radio>
-        </DropdownItem>
-        <DropdownItem>
-            <Radio name="filter" bind:group={filter} value={2}>Retired</Radio>
-        </DropdownItem>
-        <DropdownItem>
-            <Radio name="filter" bind:group={filter} value={3}>Under Construction</Radio>
-        </DropdownItem>
+      {/each}
     </Dropdown>
-</div>
+  </div>
+  
+  <style>
+    :global(.filter-btn) {
+      @apply bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white w-full h-9 flex items-center gap-2 px-4 border border-gray-200 dark:border-gray-600 rounded-lg;
+    }
+
+    :global(.filter-text) {
+      @apply text-gray-800 dark:text-white;
+    }
+  
+    :global(.icon, .icon-chevron) {
+      @apply w-5 h-5 text-gray-800 dark:text-white;
+    }
+  
+    :global(.icon-chevron) {
+      @apply ml-2 text-gray-800 dark:text-white;
+    }
+  
+    :global(.dropdown) {
+      @apply w-full mt-2 p-2 space-y-2 text-sm;
+    }
+  </style>
+  
