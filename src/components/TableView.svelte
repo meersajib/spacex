@@ -112,7 +112,7 @@
   }
 
   :global(.table-head) {
-    @apply bg-gray-50 h-[50px] text-gray-500 dark:bg-gray-600 dark:text-white text-left;
+    @apply bg-gray-50 h-[50px] text-gray-500 dark:bg-gray-700 dark:text-white text-left;
   }
 
   :global(.table-head-cell) {

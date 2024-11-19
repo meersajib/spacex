@@ -1,4 +1,4 @@
-// tailwind.config.js
+import flowbitePlugin from "flowbite/plugin";
 export default {
   content: [
     "./src/**/*.{html,js,svelte,ts}", // Add your file paths here
@@ -46,8 +46,5 @@ export default {
       },
     },
   },
-  plugins: [
-    require("@tailwindcss/typography"),
-    require("flowbite/plugin"), // Directly requiring Flowbite plugin
-  ],
+  plugins: [flowbitePlugin],
 };
